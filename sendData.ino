@@ -19,7 +19,7 @@ TimerHandle_t mqttReconnectTimer;
 TimerHandle_t wifiReconnectTimer;
 
 #define WIFI_SSID "******"
-#define WIFI_PASSWORD "***********"
+#define WIFI_PASSWORD "*********** "
 
 static byte mymac[] = { 0xCC, 0x50, 0xE3, 0x8A, 0x9B, 0xDC};
 static byte myip[] = { 192, 168, 1, 8 };    //IPAddress(192, 168, 1, 8);
@@ -74,6 +74,8 @@ void getNetworkStatus(WiFiEvent_t event, int timer){
   bool networkStatus[3] = {false,   // WiFi
                            false,   // Ethernet
                            false};  // MQTT
+  //  *To-Do: Differentiate if-esle branching to devide choose. 
+  //  *       Allows multiple true-value for network status
   
   if (event = SYSTEM_EVENT_STA_DISCONNECTED)
   {
