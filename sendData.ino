@@ -18,8 +18,8 @@ AsyncMqttClient mqttClient;
 TimerHandle_t mqttReconnectTimer;
 TimerHandle_t wifiReconnectTimer;
 
-#define WIFI_SSID "Hero"
-#define WIFI_PASSWORD "crystalship"
+#define WIFI_SSID "******"
+#define WIFI_PASSWORD "***********"
 
 static byte mymac[] = { 0xCC, 0x50, 0xE3, 0x8A, 0x9B, 0xDC};
 static byte myip[] = { 192, 168, 1, 8 };    //IPAddress(192, 168, 1, 8);
