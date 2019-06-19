@@ -99,7 +99,7 @@ typedef struct {
 #define DHCP_INFINITE_LEASE  0xffffffff
 
 static byte dhcpState = DHCP_STATE_INIT;
-static char hostname[DHCP_HOSTNAME_MAX_LEN] = "Arduino-ENC28j60-00";   // Last two characters will be filled by last 2 MAC digits ;
+static char hostname[DHCP_HOSTNAME_MAX_LEN] = "BOR_ESP32-00";   // Last two characters will be filled by last 2 MAC digits ;
 static uint32_t currentXid;
 static uint32_t stateTimer;
 static uint32_t leaseStart;
@@ -356,7 +356,7 @@ bool EtherCard::dhcpSetup (const char *hname, bool fromRam) {
     dhcpState = DHCP_STATE_INIT;
     uint16_t start = millis();
 
-    while (dhcpState != DHCP_STATE_BOUND && uint16_t(millis()) - start < 60000) {
+    while (dhcpState != DHCP_STATE_BOUND && uint16_t(millis()) - start < 10000) {
         if (isLinkUp()) DhcpStateMachine(packetReceive());
     }
     updateBroadcastAddress();
