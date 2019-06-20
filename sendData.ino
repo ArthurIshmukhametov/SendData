@@ -147,7 +147,15 @@ String sendEthernet(std::map <String, String> _dict){
 
 void callback(uint8_t p1, uint16_t p2, uint16_t p3){
     //    NO IDEA WHAT TO DO HERE
+    Serial.print("callback p1: ");
+    Serial.println(p1);
+    Serial.print("callback p2: ");
+    Serial.println(p2);
+    Serial.print("callback p3: ");
+    Serial.println(p3);
 }
+
+
 
 const char *  dictionaryToPOST(std::map <String, String> _dict){
   //      CONVERTING DICTIONARY TO CONST CHAR* FOR POST REQUEST
