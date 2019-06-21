@@ -56,12 +56,21 @@ void setup() {
   mqttClient.onMessage(onMqttMessage);
   mqttClient.onPublish(onMqttPublish);
   mqttClient.setServer(MQTT_HOST, MQTT_PORT);
+  
   connectToWifi();
-  connectEthernet(5000);
+  connectEthernet();
+  
   server.begin();
 }
 
 void loop() {
+  
+  ether.packetLoop(ether.packetReceive());
+  const char* reply = ether.tcpReply(session);
+  if (reply != 0) {
+    Serial.println("Got a response!");
+    Serial.println(reply);
+  }
   
   if (networkStatus_num<10){        //    checking network status every 10 times
     networkStatus_num++;
@@ -76,7 +85,7 @@ void loop() {
 //void getNetworkStatus(WiFiEvent_t _event){
 void getNetworkStatus(){
     //    NETWORK STATUS CHECK FUNCTION  
-  bool networkStatus[3] = {false,   // WiFi
+  networkStatus[3] = {false,   // WiFi
                            false,   // Ethernet
                            false};  // MQTT
   //  *To-Do: Differentiate if-esle branching to devide choose. 
@@ -99,7 +108,7 @@ void getNetworkStatus(){
     }
   }
 }
-String sendData(std::map <String, String> _dict){
+String sendData(map<String, String> _dict){
     //    SEND DATA MAIN FUNCTION
   
   if (networkStatus[0])
