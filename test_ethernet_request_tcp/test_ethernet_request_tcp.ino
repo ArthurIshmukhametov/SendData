@@ -1,4 +1,5 @@
 #include <EtherCard.h>
+
 const char website[] PROGMEM = "jsonplaceholder.typicode.com";
 static byte session;
 Stash stash;
